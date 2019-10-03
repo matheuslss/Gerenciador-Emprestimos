@@ -12,4 +12,6 @@ routes.post('/sessions', SessionController.store);
 
 routes.post('/emprestimos', EmprestimoController.store);
 
+routes.get('/emprestimos', EmprestimoController.index);
+
 module.exports = routes;
