@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import api from '../../services/api';
 import './LoginForm.css';
 
-export default class LoginForm extends React.Component {
-  render() {
+ function LoginForm () {
+    const [email, setEmail] = useState('');
+
+   async function handleSubmit(event) {
+      event.preventDefault();
+
+      const response = await api.post('/sessions', { email });
+
+      const { _id } = response.data;
+
+      localStorage.setItem('user', _id);
+    }
+
     return (
       <div className="container">
         <div className="content">
           <p>Informe seus dados para acessar: </p>
-          <form>
-            
-              <label for="exampleInputNome1">Nome</label>
-              <input 
-                type="text" 
-                id="exampleInputNome1" 
-                placeholder="Nome" />
+          <form onSubmit={handleSubmit}> 
       
-              <label for="exampleInputEmail1">Email</label>
+              <label htmlFor="exampleInputEmail1">Email</label>
               <input 
                 type="email"  
                 id="exampleInputEmail1" 
                 aria-describedby="emailHelp" 
-                placeholder="Email" />
+                placeholder="Email"
+                value={ email }
+                onChange={ event => setEmail( event.target.value ) }
+                />
            
             <button type="submit">Enviar</button>
           </form>
         </div>
       </div>
     )
-  }
 }
+
+export default LoginForm;
