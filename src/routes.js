@@ -1,5 +1,6 @@
 const express = require('express');
 const SessionController = require('./controllers/SessionController');
+const EmprestimoController = require('./controllers/EmprestimoController');
 
 const routes = express.Router();
 
@@ -8,5 +9,7 @@ const routes = express.Router();
 //req.body acessa o corpo da requisição (criar e editar)
 
 routes.post('/sessions', SessionController.store);
+
+routes.post('/emprestimos', EmprestimoController.store);
 
 module.exports = routes;

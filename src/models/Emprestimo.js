@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const EmprestimoSchema = new mongoose.Schema({
-  item: [String],
+  items: [String],
   dataEmprestimo: Date,
   dataPrevisaoDev: Date,
   dataDevolucao: Date,
