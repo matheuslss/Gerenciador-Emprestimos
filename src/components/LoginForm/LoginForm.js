@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import api from '../../services/api';
 import './LoginForm.css';
 
- function LoginForm () {
+export default function LoginForm (props) {
     const [email, setEmail] = useState('');
+    const { history, setUser } = props;
+    console.log('Props FormLogin', props);
 
    async function handleSubmit(event) {
       event.preventDefault();
 
       const response = await api.post('/sessions', { email });
 
-      const { _id } = response.data;
+      setUser(response.data);
 
-      localStorage.setItem('user', _id);
+      // console.log('setUser', setUser)
+      history.push('/listarEmprestimos');
     }
 
     return (
@@ -37,5 +40,3 @@ import './LoginForm.css';
       </div>
     )
 }
-
-export default LoginForm;
