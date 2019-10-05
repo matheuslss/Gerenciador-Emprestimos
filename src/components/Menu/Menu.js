@@ -19,9 +19,9 @@ function Menu(props) {
           <ul className="navbar-nav">
             { props.user ?
             <React.Fragment>
-              <li className="nav-tem disable">
-                <a className="nav-link ">{props.user.email}</a>
-              </li>
+              <span class="navbar-text">
+              {props.user.email},
+              </span>
               <li className="nav-item">
               <Link className="nav-link" to="/listarEmprestimos">Empréstimos</Link>
               </li>

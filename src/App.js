@@ -58,6 +58,7 @@ export default class App extends React.Component {
             <React.Fragment>
               <Route path='/listarEmprestimos' component={(props) => <ListarEmprestimos user={this.state.usuario}{...props} /> } />
               <Route path='/novoEmprestimo' component={(props) => <NovoEmprestimo user={this.state.usuario}{...props} />}/>  
+              <Redirect to="/listarEmprestimos" exact />
             </React.Fragment>
             }
           </Switch>
